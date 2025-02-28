@@ -15,47 +15,7 @@ import { ReflectionEngine } from './analytics/reflectionEngine.js';
 import { GraphRenderer } from './visualization/graphRenderer.js';
 import { PromptAnalyzer, PromptContext } from './analytics/promptAnalyzer.js';
 import { IntelligenceMaximizationModule, IntelligenceMaximizationRecommendations } from './analytics/intelligenceMaximizationModule.js';
-
-interface ThoughtData {
-  thought: string;
-  thoughtNumber: number;
-  totalThoughts: number;
-  isRevision?: boolean;
-  revisesThought?: number;
-  branchFromThought?: number;
-  branchId?: string;
-  needsMoreThoughts?: boolean;
-  nextThoughtNeeded: boolean;
-  phase?: 'Planning' | 'Analysis' | 'Execution' | 'Verification';
-  dependencies?: number[];
-  toolsUsed?: string[];
-  complexity?: 'simple' | 'medium' | 'complex';
-  status?: 'complete' | 'in-progress' | 'needs-revision';
-  quality?: {
-    coherence: number;
-    depth: number;
-    relevance: number;
-    qualityScore: number;
-    feedback: string[];
-  };
-  keywords?: string[];
-  insightValue?: number;
-  classification?: 'hypothesis' | 'observation' | 'conclusion' | 'question' | 'solution';
-  confidenceScore?: number;
-  evidenceStrength?: number;
-  assumptions?: string[];
-  vector?: number[];
-  conceptsExtracted?: string[];
-  contradictions?: Array<{ thoughtNumber: number; explanation: string }>;
-  reflectionPrompts?: string[];
-  // New prompt alignment fields
-  promptAlignment?: number; // 0-10 score of how well a thought aligns with prompt
-  promptRelevance?: Record<string, number>; // Relevance to different prompt aspects
-  driftWarning?: string; // Warning if thought drifts from prompt
-  suggestedCorrections?: string[]; // Suggestions to realign with prompt
-  // New intelligence maximization fields
-  intelligenceRecommendations?: IntelligenceMaximizationRecommendations;
-}
+import { ThoughtData, CognitiveArchitecture, EpistemologicalFramework, AdvancedMetacognitiveStrategy } from './types/ThoughtData.js';
 
 // Add type for tool usage statistics
 interface ToolUsageStats {
