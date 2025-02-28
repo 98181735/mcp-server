@@ -44,4 +44,30 @@ export interface ThoughtData {
   
   // Intelligence maximization properties
   intelligenceRecommendations?: IntelligenceMaximizationRecommendations;
+  
+  // New advanced intelligence properties
+  cognitiveArchitectures?: CognitiveArchitecture[];
+  epistemologicalFrameworks?: EpistemologicalFramework[];
+  advancedMetacognitiveStrategies?: AdvancedMetacognitiveStrategy[];
+  conceptualBlending?: Array<{
+    sourceFrames: string[];
+    blendedConcept: string;
+    emergentStructure: string;
+    applicability: number;
+  }>;
+  dialecticalReasoning?: Array<{
+    thesis: string;
+    antithesis: string;
+    synthesis: string;
+    progressiveImplications: string[];
+  }>;
+  adaptiveLearningPath?: {
+    currentCapabilities: string[];
+    developmentGoals: string[];
+    learningTrajectory: string[];
+    milestones: Array<{
+      description: string;
+      estimatedThoughtCount: number;
+    }>;
+  };
 } 
