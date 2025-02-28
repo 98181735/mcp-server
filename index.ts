@@ -99,6 +99,11 @@ class SequentialThinkingServer {
     
     // Initialize intelligence maximization component
     this.intelligenceMaximizationModule = new IntelligenceMaximizationModule();
+    
+    console.error(chalk.cyan('MCP Sequential Thinking Server initialized with advanced intelligence capabilities'));
+    console.error(chalk.green('Available cognitive architectures: Conceptual Blending Network, Bayesian Cognitive Architecture, Hierarchical Problem Solver'));
+    console.error(chalk.green('Available epistemological frameworks: Empiricism, Rationalism, Constructivism, Critical Rationalism'));
+    console.error(chalk.green('Available metacognitive strategies: Cognitive Decoupling, Metacognitive Questioning, Conceptual Blending Protocol'));
   }
 
   public setAvailableTools(tools: string[]) {
@@ -577,6 +582,60 @@ class SequentialThinkingServer {
             );
           }
           
+          // After generating intelligenceRecommendations, extract and assign the new fields
+          if (validatedInput.intelligenceRecommendations) {
+            // Extract cognitive architectures if available
+            if (validatedInput.intelligenceRecommendations.cognitiveArchitectures) {
+              validatedInput.cognitiveArchitectures = 
+                validatedInput.intelligenceRecommendations.cognitiveArchitectures;
+            }
+            
+            // Extract epistemological frameworks if available
+            if (validatedInput.intelligenceRecommendations.epistemologicalFrameworks) {
+              validatedInput.epistemologicalFrameworks = 
+                validatedInput.intelligenceRecommendations.epistemologicalFrameworks;
+            }
+            
+            // Extract advanced metacognitive strategies if available
+            if (validatedInput.intelligenceRecommendations.advancedMetacognitiveStrategies) {
+              validatedInput.advancedMetacognitiveStrategies = 
+                validatedInput.intelligenceRecommendations.advancedMetacognitiveStrategies;
+            }
+            
+            // Extract conceptual blending if available
+            if (validatedInput.intelligenceRecommendations.conceptualBlending) {
+              validatedInput.conceptualBlending = 
+                validatedInput.intelligenceRecommendations.conceptualBlending;
+            }
+            
+            // Extract dialectical reasoning if available
+            if (validatedInput.intelligenceRecommendations.dialecticalReasoning) {
+              validatedInput.dialecticalReasoning = 
+                validatedInput.intelligenceRecommendations.dialecticalReasoning;
+            }
+            
+            // Extract adaptive learning path if available
+            if (validatedInput.intelligenceRecommendations.adaptiveLearningPath) {
+              validatedInput.adaptiveLearningPath = 
+                validatedInput.intelligenceRecommendations.adaptiveLearningPath;
+            }
+            
+            // Log advanced intelligence information
+            console.error(chalk.cyan('\nAdvanced Intelligence Features:'));
+            if (validatedInput.cognitiveArchitectures) {
+              console.error(chalk.green('  Cognitive Architectures:'), 
+                validatedInput.cognitiveArchitectures.map(a => a.architectureName).join(', '));
+            }
+            if (validatedInput.epistemologicalFrameworks) {
+              console.error(chalk.green('  Epistemological Frameworks:'), 
+                validatedInput.epistemologicalFrameworks.map(f => f.frameworkName).join(', '));
+            }
+            if (validatedInput.advancedMetacognitiveStrategies) {
+              console.error(chalk.green('  Advanced Metacognitive Strategies:'), 
+                validatedInput.advancedMetacognitiveStrategies.map(s => s.strategyName).join(', '));
+            }
+          }
+          
           // Log intelligence maximization information
           console.error(chalk.cyan('\nIntelligence Maximization:'));
           
@@ -767,6 +826,13 @@ class SequentialThinkingServer {
             reasoningFrameworks: validatedInput.intelligenceRecommendations?.reasoningFrameworks,
             decisionStrategies: validatedInput.intelligenceRecommendations?.decisionStrategies,
             mentalModels: validatedInput.intelligenceRecommendations?.mentalModels,
+            // Add new advanced intelligence fields
+            cognitiveArchitectures: validatedInput.cognitiveArchitectures,
+            epistemologicalFrameworks: validatedInput.epistemologicalFrameworks,
+            advancedMetacognitiveStrategies: validatedInput.advancedMetacognitiveStrategies,
+            conceptualBlending: validatedInput.conceptualBlending,
+            dialecticalReasoning: validatedInput.dialecticalReasoning,
+            adaptiveLearningPath: validatedInput.adaptiveLearningPath,
             // Prompt progress data
             promptProgress: this.promptContext.isInitialized() && this.promptContext.getMetadata() ? {
               overallProgress: this.calculateOverallProgress(),
