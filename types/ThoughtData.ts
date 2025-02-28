@@ -1,6 +1,31 @@
 // Import the intelligence maximization interfaces
 import { IntelligenceMaximizationRecommendations } from '../analytics/intelligenceMaximizationModule.js';
 
+// Define interfaces for advanced intelligence features
+export interface CognitiveArchitecture {
+  architectureName: string;
+  description: string;
+  applicability: number; // 0-10 score
+  strengths: string[];
+  limitations: string[];
+}
+
+export interface EpistemologicalFramework {
+  frameworkName: string;
+  description: string;
+  applicability: number; // 0-10 score
+  keyPrinciples: string[];
+  exampleApplications: string[];
+}
+
+export interface AdvancedMetacognitiveStrategy {
+  strategyName: string;
+  description: string;
+  applicability: number; // 0-10 score
+  expectedBenefit: string;
+  implementationSteps: string[];
+}
+
 export interface ThoughtData {
   thought: string;
   thoughtNumber: number;

@@ -3,6 +3,8 @@
 // It recommends strategies, estimates complexity, and identifies appropriate reasoning types
 
 import { PromptMetadata } from './promptAnalyzer.js';
+// Import the advanced intelligence interfaces
+import { CognitiveArchitecture, EpistemologicalFramework, AdvancedMetacognitiveStrategy } from '../types/ThoughtData.js';
 
 // Define interfaces for the module
 
@@ -134,6 +136,31 @@ export interface IntelligenceMaximizationRecommendations {
     applicability: number;
     exampleApplication: string;
   }>;
+  // Add missing properties
+  cognitiveArchitectures?: CognitiveArchitecture[];
+  epistemologicalFrameworks?: EpistemologicalFramework[];
+  advancedMetacognitiveStrategies?: AdvancedMetacognitiveStrategy[];
+  conceptualBlending?: Array<{
+    sourceFrames: string[];
+    blendedConcept: string;
+    emergentStructure: string;
+    applicability: number;
+  }>;
+  dialecticalReasoning?: Array<{
+    thesis: string;
+    antithesis: string;
+    synthesis: string;
+    progressiveImplications: string[];
+  }>;
+  adaptiveLearningPath?: {
+    currentCapabilities: string[];
+    developmentGoals: string[];
+    learningTrajectory: string[];
+    milestones: Array<{
+      description: string;
+      estimatedThoughtCount: number;
+    }>;
+  };
 }
 
 export class IntelligenceMaximizationModule {
@@ -195,6 +222,14 @@ export class IntelligenceMaximizationModule {
     const decisionStrategies = this.recommendDecisionStrategies(promptMetadata, currentThoughtNumber, totalThoughts);
     const mentalModels = this.recommendMentalModels(promptMetadata, phase);
     
+    // New advanced intelligence features
+    const cognitiveArchitectures = this.recommendCognitiveArchitectures(promptMetadata, phase);
+    const epistemologicalFrameworks = this.recommendEpistemologicalFrameworks(promptMetadata, phase);
+    const advancedMetacognitiveStrategies = this.recommendAdvancedMetacognitiveStrategies(promptMetadata, currentThoughtNumber, totalThoughts);
+    const conceptualBlending = this.generateConceptualBlending(promptMetadata);
+    const dialecticalReasoning = this.generateDialecticalReasoning(promptMetadata);
+    const adaptiveLearningPath = this.generateAdaptiveLearningPath(promptMetadata, currentThoughtNumber, totalThoughts);
+    
     return {
       strategies,
       reasoningTypes,
@@ -212,7 +247,14 @@ export class IntelligenceMaximizationModule {
       cognitiveModels,
       reasoningFrameworks,
       decisionStrategies,
-      mentalModels
+      mentalModels,
+      // Add new advanced intelligence features
+      cognitiveArchitectures,
+      epistemologicalFrameworks,
+      advancedMetacognitiveStrategies,
+      conceptualBlending,
+      dialecticalReasoning,
+      adaptiveLearningPath
     };
   }
 
@@ -2441,5 +2483,469 @@ export class IntelligenceMaximizationModule {
     }
     
     return models.slice(0, 3); // Return top 3 models
+  }
+  /**
+   * Recommends cognitive architectures based on prompt metadata and phase
+   */
+  private recommendCognitiveArchitectures(
+    promptMetadata: PromptMetadata,
+    phase?: 'Planning' | 'Analysis' | 'Execution' | 'Verification'
+  ): CognitiveArchitecture[] {
+    const architectures: CognitiveArchitecture[] = [];
+    
+    // Add task-specific cognitive architectures
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        architectures.push({
+          architectureName: 'Conceptual Blending Network',
+          description: 'Architecture for combining concepts from different domains to create novel ideas',
+          applicability: 9,
+          strengths: ['Generates innovative combinations', 'Supports creative problem solving'],
+          limitations: ['May produce impractical ideas', 'Requires diverse knowledge base']
+        });
+        break;
+        
+      case 'analytical':
+        architectures.push({
+          architectureName: 'Bayesian Cognitive Architecture',
+          description: 'Probabilistic reasoning framework for updating beliefs based on evidence',
+          applicability: 9,
+          strengths: ['Handles uncertainty well', 'Supports evidence-based reasoning'],
+          limitations: ['Computationally intensive', 'Requires prior probability estimates']
+        });
+        break;
+        
+      case 'technical':
+        architectures.push({
+          architectureName: 'Hierarchical Problem Solver',
+          description: 'Architecture for decomposing complex problems into manageable sub-problems',
+          applicability: 9,
+          strengths: ['Effective for complex problems', 'Supports parallel processing'],
+          limitations: ['May miss cross-cutting concerns', 'Requires clear problem boundaries']
+        });
+        break;
+    }
+    
+    // Add general cognitive architecture
+    architectures.push({
+      architectureName: 'Adaptive Control of Thought',
+      description: 'General cognitive architecture modeling declarative and procedural knowledge',
+      applicability: 7,
+      strengths: ['Comprehensive cognitive model', 'Supports skill acquisition'],
+      limitations: ['Complex to implement fully', 'May be overkill for simple problems']
+    });
+    
+    return architectures.slice(0, 2); // Return top 2 architectures
+  }
+
+  /**
+   * Recommends epistemological frameworks based on prompt metadata and phase
+   */
+  private recommendEpistemologicalFrameworks(
+    promptMetadata: PromptMetadata,
+    phase?: 'Planning' | 'Analysis' | 'Execution' | 'Verification'
+  ): EpistemologicalFramework[] {
+    const frameworks: EpistemologicalFramework[] = [];
+    
+    // Add task-specific epistemological frameworks
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        frameworks.push({
+          frameworkName: 'Constructivism',
+          description: 'Knowledge is actively constructed based on experiences and interactions',
+          applicability: 8,
+          keyPrinciples: ['Knowledge is constructed, not discovered', 'Learning is an active process'],
+          exampleApplications: ['Design thinking', 'Creative problem solving']
+        });
+        break;
+        
+      case 'analytical':
+        frameworks.push({
+          frameworkName: 'Critical Rationalism',
+          description: 'Knowledge advances through conjecture and refutation',
+          applicability: 9,
+          keyPrinciples: ['Theories should be falsifiable', 'Progress through critical testing'],
+          exampleApplications: ['Scientific method', 'Hypothesis testing']
+        });
+        break;
+        
+      case 'technical':
+        frameworks.push({
+          frameworkName: 'Pragmatism',
+          description: 'Knowledge should be evaluated based on practical consequences',
+          applicability: 8,
+          keyPrinciples: ['Truth is what works in practice', 'Ideas are instruments for action'],
+          exampleApplications: ['Engineering design', 'Technical problem solving']
+        });
+        break;
+    }
+    
+    // Add general epistemological frameworks
+    frameworks.push({
+      frameworkName: 'Empiricism',
+      description: 'Knowledge comes primarily from sensory experience and evidence',
+      applicability: 7,
+      keyPrinciples: ['Evidence-based knowledge', 'Observation over theory'],
+      exampleApplications: ['Data analysis', 'Experimental design']
+    });
+    
+    frameworks.push({
+      frameworkName: 'Rationalism',
+      description: 'Knowledge can be derived through reason and logical inference',
+      applicability: 7,
+      keyPrinciples: ['Logical deduction', 'A priori reasoning'],
+      exampleApplications: ['Mathematical proofs', 'Logical analysis']
+    });
+    
+    return frameworks.slice(0, 2); // Return top 2 frameworks
+  }
+
+  /**
+   * Recommends advanced metacognitive strategies based on prompt metadata and progress
+   */
+  private recommendAdvancedMetacognitiveStrategies(
+    promptMetadata: PromptMetadata,
+    currentThoughtNumber: number,
+    totalThoughts: number
+  ): AdvancedMetacognitiveStrategy[] {
+    const strategies: AdvancedMetacognitiveStrategy[] = [];
+    const progress = currentThoughtNumber / totalThoughts;
+    
+    // Add task-specific metacognitive strategies
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        strategies.push({
+          strategyName: 'Conceptual Blending Protocol',
+          description: 'Systematically combine concepts from different domains to generate novel ideas',
+          applicability: 9,
+          expectedBenefit: 'Generates innovative solutions through structured concept combination',
+          implementationSteps: [
+            'Identify source domains relevant to the problem',
+            'Extract key concepts from each domain',
+            'Create mappings between concepts',
+            'Blend the mapped concepts to generate new ideas',
+            'Elaborate and refine the blended concepts'
+          ]
+        });
+        break;
+        
+      case 'analytical':
+        strategies.push({
+          strategyName: 'Cognitive Decoupling',
+          description: 'Separate thinking from context to avoid biases and preconceptions',
+          applicability: 9,
+          expectedBenefit: 'Reduces contextual biases and enables more objective analysis',
+          implementationSteps: [
+            'Identify potential biases and preconceptions',
+            'Deliberately set aside contextual assumptions',
+            'Analyze the problem using abstract principles',
+            'Apply multiple perspectives to the analysis',
+            'Reintegrate context carefully after analysis'
+          ]
+        });
+        break;
+        
+      case 'technical':
+        strategies.push({
+          strategyName: 'Mental Model Iteration',
+          description: 'Systematically refine mental models of technical systems through testing',
+          applicability: 8,
+          expectedBenefit: 'Develops more accurate understanding of complex technical systems',
+          implementationSteps: [
+            'Create initial mental model of the system',
+            'Generate predictions based on the model',
+            'Test predictions against actual behavior',
+            'Identify discrepancies and update the model',
+            'Repeat until model accurately predicts system behavior'
+          ]
+        });
+        break;
+    }
+    
+    // Add general metacognitive strategies
+    strategies.push({
+      strategyName: 'Metacognitive Questioning',
+      description: 'Systematically question your own thinking process to improve reasoning',
+      applicability: 8,
+      expectedBenefit: 'Identifies and corrects flaws in reasoning',
+      implementationSteps: [
+        'Pause regularly during problem solving',
+        'Ask: "What assumptions am I making?"',
+        'Ask: "What evidence supports my conclusions?"',
+        'Ask: "What alternative approaches could I try?"',
+        'Adjust thinking based on answers to these questions'
+      ]
+    });
+    
+    return strategies.slice(0, 2); // Return top 2 strategies
+  }
+
+  /**
+   * Generates conceptual blending recommendations based on prompt metadata
+   */
+  private generateConceptualBlending(
+    promptMetadata: PromptMetadata
+  ): Array<{
+    sourceFrames: string[];
+    blendedConcept: string;
+    emergentStructure: string;
+    applicability: number;
+  }> {
+    const blends: Array<{
+      sourceFrames: string[];
+      blendedConcept: string;
+      emergentStructure: string;
+      applicability: number;
+    }> = [];
+    
+    // Only generate conceptual blends for creative or complex tasks
+    if (promptMetadata.taskType === 'creative' || promptMetadata.complexity === 'complex') {
+      // Generate domain-specific blends based on prompt domains
+      if (promptMetadata.domains.length >= 2) {
+        blends.push({
+          sourceFrames: [promptMetadata.domains[0], promptMetadata.domains[1]],
+          blendedConcept: `${promptMetadata.domains[0]}-${promptMetadata.domains[1]} Integration`,
+          emergentStructure: `Novel approach combining principles from ${promptMetadata.domains[0]} and ${promptMetadata.domains[1]}`,
+          applicability: 8
+        });
+      }
+      
+      // Add task-specific conceptual blends
+      switch (promptMetadata.taskType) {
+        case 'creative':
+          blends.push({
+            sourceFrames: ['Divergent Thinking', 'Convergent Analysis'],
+            blendedConcept: 'Structured Creativity Framework',
+            emergentStructure: 'Systematic approach that alternates between creative exploration and analytical refinement',
+            applicability: 9
+          });
+          break;
+          
+        case 'analytical':
+          blends.push({
+            sourceFrames: ['Quantitative Analysis', 'Qualitative Insights'],
+            blendedConcept: 'Mixed-Method Analytical Model',
+            emergentStructure: 'Framework that integrates numerical data with contextual understanding',
+            applicability: 8
+          });
+          break;
+          
+        case 'technical':
+          blends.push({
+            sourceFrames: ['System Architecture', 'User Experience'],
+            blendedConcept: 'Human-Centered Technical Design',
+            emergentStructure: 'Technical approach that prioritizes both system integrity and user needs',
+            applicability: 8
+          });
+          break;
+      }
+    }
+    
+    return blends;
+  }
+
+  /**
+   * Generates dialectical reasoning recommendations based on prompt metadata
+   */
+  private generateDialecticalReasoning(
+    promptMetadata: PromptMetadata
+  ): Array<{
+    thesis: string;
+    antithesis: string;
+    synthesis: string;
+    progressiveImplications: string[];
+  }> {
+    const dialectics: Array<{
+      thesis: string;
+      antithesis: string;
+      synthesis: string;
+      progressiveImplications: string[];
+    }> = [];
+    
+    // Generate task-specific dialectical reasoning
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        dialectics.push({
+          thesis: 'Focus on novel, innovative solutions',
+          antithesis: 'Prioritize practical, implementable approaches',
+          synthesis: 'Develop innovative solutions with practical implementation paths',
+          progressiveImplications: [
+            'Balance creativity with feasibility',
+            'Prototype innovative ideas to test practicality',
+            'Iterate between divergent and convergent thinking'
+          ]
+        });
+        break;
+        
+      case 'analytical':
+        dialectics.push({
+          thesis: 'Rely on quantitative data and metrics',
+          antithesis: 'Consider qualitative factors and context',
+          synthesis: 'Integrate quantitative analysis with qualitative understanding',
+          progressiveImplications: [
+            'Use mixed methods approaches',
+            'Validate quantitative findings with qualitative insights',
+            'Develop contextually-aware analytical frameworks'
+          ]
+        });
+        break;
+        
+      case 'technical':
+        dialectics.push({
+          thesis: 'Optimize for technical performance and efficiency',
+          antithesis: 'Prioritize usability and user experience',
+          synthesis: 'Design systems that are both technically excellent and user-friendly',
+          progressiveImplications: [
+            'Involve users early in technical design',
+            'Establish metrics for both performance and usability',
+            'Create technical solutions that adapt to user needs'
+          ]
+        });
+        break;
+    }
+    
+    // Add complexity-specific dialectical reasoning
+    if (promptMetadata.complexity === 'complex') {
+      dialectics.push({
+        thesis: 'Break down the problem into independent components',
+        antithesis: 'Consider the problem holistically as an interconnected system',
+        synthesis: 'Use modular design within a systems thinking framework',
+        progressiveImplications: [
+          'Identify both component-level and system-level requirements',
+          'Design clear interfaces between components',
+          'Test both individual components and integrated system'
+        ]
+      });
+    }
+    
+    return dialectics;
+  }
+
+  /**
+   * Generates adaptive learning path based on prompt metadata and progress
+   */
+  private generateAdaptiveLearningPath(
+    promptMetadata: PromptMetadata,
+    currentThoughtNumber: number,
+    totalThoughts: number
+  ): {
+    currentCapabilities: string[];
+    developmentGoals: string[];
+    learningTrajectory: string[];
+    milestones: Array<{
+      description: string;
+      estimatedThoughtCount: number;
+    }>;
+  } | undefined {
+    // Only generate learning path for complex problems or if significant progress has been made
+    if (promptMetadata.complexity !== 'complex' && currentThoughtNumber < 3) {
+      return undefined;
+    }
+    
+    // Define current capabilities based on task type
+    const currentCapabilities: string[] = [];
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        currentCapabilities.push('Divergent thinking', 'Conceptual association');
+        break;
+      case 'analytical':
+        currentCapabilities.push('Logical analysis', 'Pattern recognition');
+        break;
+      case 'technical':
+        currentCapabilities.push('Technical problem decomposition', 'Solution implementation');
+        break;
+      default:
+        currentCapabilities.push('General problem solving', 'Sequential thinking');
+    }
+    
+    // Add domain-specific capabilities
+    if (promptMetadata.domains.length > 0) {
+      currentCapabilities.push(`${promptMetadata.domains[0]} domain knowledge`);
+    }
+    
+    // Define development goals based on task complexity and progress
+    const developmentGoals: string[] = [];
+    if (promptMetadata.complexity === 'complex') {
+      developmentGoals.push('Systems thinking for complex problems');
+      developmentGoals.push('Multi-perspective analysis');
+    }
+    
+    // Add task-specific development goals
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        developmentGoals.push('Advanced conceptual blending techniques');
+        developmentGoals.push('Evaluation frameworks for creative solutions');
+        break;
+      case 'analytical':
+        developmentGoals.push('Causal inference in complex systems');
+        developmentGoals.push('Bayesian reasoning under uncertainty');
+        break;
+      case 'technical':
+        developmentGoals.push('Architectural pattern recognition');
+        developmentGoals.push('Technical debt management strategies');
+        break;
+    }
+    
+    // Define learning trajectory
+    const learningTrajectory: string[] = [
+      'Master foundational concepts and techniques',
+      'Apply techniques to increasingly complex problems',
+      'Integrate multiple approaches and perspectives',
+      'Develop novel solutions and methodologies'
+    ];
+    
+    // Define milestones
+    const milestones: Array<{
+      description: string;
+      estimatedThoughtCount: number;
+    }> = [];
+    
+    // Calculate milestone thought counts based on total thoughts
+    const milestone1 = Math.max(1, Math.floor(totalThoughts * 0.25));
+    const milestone2 = Math.max(2, Math.floor(totalThoughts * 0.5));
+    const milestone3 = Math.max(3, Math.floor(totalThoughts * 0.75));
+    const milestone4 = totalThoughts;
+    
+    // Add task-specific milestones
+    switch (promptMetadata.taskType) {
+      case 'creative':
+        milestones.push(
+          { description: 'Generate diverse initial ideas', estimatedThoughtCount: milestone1 },
+          { description: 'Develop promising concepts in detail', estimatedThoughtCount: milestone2 },
+          { description: 'Evaluate and refine solutions', estimatedThoughtCount: milestone3 },
+          { description: 'Finalize innovative solution', estimatedThoughtCount: milestone4 }
+        );
+        break;
+      case 'analytical':
+        milestones.push(
+          { description: 'Define analytical framework', estimatedThoughtCount: milestone1 },
+          { description: 'Analyze key factors and relationships', estimatedThoughtCount: milestone2 },
+          { description: 'Synthesize findings into cohesive model', estimatedThoughtCount: milestone3 },
+          { description: 'Validate and refine analytical conclusions', estimatedThoughtCount: milestone4 }
+        );
+        break;
+      case 'technical':
+        milestones.push(
+          { description: 'Establish technical requirements', estimatedThoughtCount: milestone1 },
+          { description: 'Design core technical architecture', estimatedThoughtCount: milestone2 },
+          { description: 'Implement and test key components', estimatedThoughtCount: milestone3 },
+          { description: 'Optimize and finalize technical solution', estimatedThoughtCount: milestone4 }
+        );
+        break;
+      default:
+        milestones.push(
+          { description: 'Define problem scope and approach', estimatedThoughtCount: milestone1 },
+          { description: 'Develop initial solution framework', estimatedThoughtCount: milestone2 },
+          { description: 'Refine and validate approach', estimatedThoughtCount: milestone3 },
+          { description: 'Finalize comprehensive solution', estimatedThoughtCount: milestone4 }
+        );
+    }
+    
+    return {
+      currentCapabilities,
+      developmentGoals,
+      learningTrajectory,
+      milestones
+    };
   }
 } 
